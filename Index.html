@@ -497,7 +497,7 @@
 
         // Set the WhatsApp link dynamically
         // Note: Replace '1234567890' with your actual WhatsApp number, including the country code
-        const phoneNumber = '1234567890';
+        const phoneNumber = '00213698762533';
         const prefilledMessage = encodeURIComponent("Hello, I would like to inquire about your document translation services.");
         whatsappLink.href = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`;
         
@@ -507,5 +507,33 @@
             animateHeadline(); // Initial call to start the headline animation
         });
     </script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+<script>
+    (function(){
+        emailjs.init("PKIhV_Vg3vkxmb5XZ"); // trouvé dans Account > API Keys
+    })();
+</script>
+
+<script>
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        emailjs.send("service_cxeen91", "template_cc29z6a", {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        }).then(() => {
+            formMessage.textContent = translations[languageSwitcher.value]["form-success"];
+            formMessage.classList.remove('hidden', 'text-red-600');
+            formMessage.classList.add('text-green-600');
+            contactForm.reset();
+        }, (error) => {
+            formMessage.textContent = "❌ Erreur d’envoi : " + error.text;
+            formMessage.classList.remove('hidden', 'text-green-600');
+            formMessage.classList.add('text-red-600');
+        });
+    });
+</script>
+
 </body>
 </html>
