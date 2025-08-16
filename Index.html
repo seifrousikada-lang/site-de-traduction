@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="page-title">Premium Document Translation Services</title>
+    <!-- Tailwind CSS CDN for a modern, responsive framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for sleek icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Tailwind configuration for the project */
+        :root {
+            --font-poppins: 'Poppins', sans-serif;
+            --font-cairo: 'Cairo', sans-serif;
+        }
+        body {
+            font-family: var(--font-poppins);
+            background-color: #f8f9fa; /* Very light gray */
+            color: #212529; /* Dark gray for text */
+        }
+        .rtl {
+            font-family: var(--font-cairo);
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Custom gradient for hero background */
+        .bg-hero-gradient {
+            background: linear-gradient(135deg, #f0f4f8 0%, #d8e2ec 100%);
+        }
+
+        /* Gradient text effect for the main headline */
+        .text-gradient {
+            background-image: linear-gradient(45deg, #1f2937, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Keyframe animation for text cycling */
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+
+        .animated-text {
+            animation: fadeInOut 5s infinite;
+        }
+
+        /* Custom class for card and button shadows */
+        .card-shadow {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom styles for the fixed WhatsApp button */
+        .whatsapp-fixed-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .whatsapp-fixed-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Smooth scroll effect for internal links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Floating WhatsApp Button -->
+    <a href="#" id="whatsapp-link" class="whatsapp-fixed-btn p-4 bg-green-500 rounded-full shadow-lg text-white transform hover:scale-110">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <!-- Header and Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50 rounded-b-xl">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-blue-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9a3 3 0 100 6 3 3 0 000-6z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 9a3 3 0 100 6 3 3 0 000-6zM15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <h1 class="text-2xl font-bold text-gray-800" data-lang-key="logo-title">Translate Pro</h1>
+            </div>
+            <div class="relative inline-block text-left">
+                <div class="flex items-center space-x-2 border border-gray-300 rounded-full px-3 py-2 bg-gray-50 shadow-inner">
+                    <i class="fas fa-globe text-gray-500"></i>
+                    <select id="language-switcher" class="block bg-transparent focus:outline-none cursor-pointer text-gray-700">
+                        <option value="en" class="flex items-center">🇬🇧 English</option>
+                        <option value="ar" class="flex items-center">🇸🇦 العربية</option>
+                        <option value="fr" class="flex items-center">🇫🇷 Français</option>
+                        <option value="es" class="flex items-center">🇪🇸 Español</option>
+                        <option value="zh" class="flex items-center">🇨🇳 中文</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-hero-gradient py-20 md:py-32 relative overflow-hidden rounded-b-3xl">
+            <div class="absolute inset-0 z-0 opacity-10">
+                <!-- Simple SVG background pattern for a clean, modern look -->
+                <svg width="100%" height="100%">
+                    <pattern id="pattern-circles" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <circle cx="5" cy="5" r="1" fill="#cbd5e1"/>
+                    </pattern>
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"/>
+                </svg>
+            </div>
+            <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center relative z-10">
+                <h2 class="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900 mb-4 transition-all duration-500">
+                    <span id="animated-headline"></span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl" data-lang-key="hero-description">I provide accurate and high-quality translations for various documents, ensuring your message is conveyed perfectly. Trust my expertise for all your linguistic needs.</p>
+                <a href="#contact" class="inline-flex items-center justify-center bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                    <span data-lang-key="contact-cta">Get a Free Quote</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800" data-lang-key="services-title">My Services</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card: Administrative -->
+                    <div class="bg-gray-50 p-6 rounded-2xl card-shadow border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-100 text-blue-600 mb-4 transform transition-all duration-300">
+                            <i class="fas fa-briefcase text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="service-admin-title">Administrative Documents</h4>
+                        <p class="text-gray-600" data-lang-key="service-admin-desc">Contracts, business correspondence, reports, certificates, and more.</p>
+                    </div>
+                    <!-- Service Card: Academic -->
+                    <div class="bg-gray-50 p-6 rounded-2xl card-shadow border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-green-100 text-green-600 mb-4">
+                            <i class="fas fa-book-open text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="service-academic-title">Academic Documents</h4>
+                        <p class="text-gray-600" data-lang-key="service-academic-desc">Theses, dissertations, research papers, transcripts, and diplomas.</p>
+                    </div>
+                    <!-- Service Card: Legal -->
+                    <div class="bg-gray-50 p-6 rounded-2xl card-shadow border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-red-100 text-red-600 mb-4">
+                            <i class="fas fa-balance-scale text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="service-legal-title">Legal Documents</h4>
+                        <p class="text-gray-600" data-lang-key="service-legal-desc">Court documents, patents, legal contracts, and official statements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Me Section -->
+        <section class="py-16 md:py-24 bg-blue-50">
+            <div class="container mx-auto px-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800" data-lang-key="why-choose-title">Why Choose Me?</h3>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <!-- Strength Card: Speed -->
+                    <div class="bg-white p-8 rounded-2xl card-shadow max-w-sm text-center transform transition-all duration-300 hover:scale-105">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto rounded-full bg-blue-100 text-blue-600 mb-4">
+                            <i class="fas fa-bolt text-4xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength-speed-title">Unmatched Speed</h4>
+                        <p class="text-gray-600" data-lang-key="strength-speed-desc">Receive your translated documents promptly without compromising on quality.</p>
+                    </div>
+                    <!-- Strength Card: Accuracy -->
+                    <div class="bg-white p-8 rounded-2xl card-shadow max-w-sm text-center transform transition-all duration-300 hover:scale-105">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto rounded-full bg-green-100 text-green-600 mb-4">
+                            <i class="fas fa-check-double text-4xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength-accuracy-title">Precision & Accuracy</h4>
+                        <p class="text-gray-600" data-lang-key="strength-accuracy-desc">Every translation is meticulously reviewed for complete accuracy and fidelity.</p>
+                    </div>
+                    <!-- Strength Card: Pricing -->
+                    <div class="bg-white p-8 rounded-2xl card-shadow max-w-sm text-center transform transition-all duration-300 hover:scale-105">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto rounded-full bg-amber-100 text-amber-600 mb-4">
+                            <i class="fas fa-tags text-4xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength-pricing-title">Affordable Pricing</h4>
+                        <p class="text-gray-600" data-lang-key="strength-pricing-desc">Competitive and transparent pricing to provide you with the best value.</p>
+                    </div>
+                    <!-- Strength Card: Confidentiality -->
+                    <div class="bg-white p-8 rounded-2xl card-shadow max-w-sm text-center transform transition-all duration-300 hover:scale-105">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto rounded-full bg-red-100 text-red-600 mb-4">
+                            <i class="fas fa-shield-alt text-4xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength-confidentiality-title">Full Confidentiality</h4>
+                        <p class="text-gray-600" data-lang-key="strength-confidentiality-desc">Your documents and personal information are always treated with the highest level of confidentiality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800" data-lang-key="contact-title">Get a Free Quote</h3>
+                <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-2xl card-shadow border border-gray-200">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-semibold mb-2" data-lang-key="form-name-label">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter your name" data-lang-key="form-name-placeholder" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-semibold mb-2" data-lang-key="form-email-label">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter your email" data-lang-key="form-email-placeholder" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-semibold mb-2" data-lang-key="form-message-label">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all duration-300" placeholder="Enter your message" data-lang-key="form-message-placeholder" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105" data-lang-key="form-submit-button">Send Message</button>
+                    </form>
+                    <div id="form-message" class="mt-4 text-center text-green-600 font-semibold hidden"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 rounded-t-xl">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Translate Pro. <span data-lang-key="footer-rights">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                "page-title": "Premium Document Translation Services",
+                "logo-title": "Translate Pro",
+                "hero-headline": ["Document Translation"],
+                "hero-description": "I provide accurate and high-quality translations for various documents, ensuring your message is conveyed perfectly. Trust my expertise for all your linguistic needs.",
+                "contact-cta": "Get a Free Quote",
+                "services-title": "My Services",
+                "service-admin-title": "Administrative Documents",
+                "service-admin-desc": "Contracts, business correspondence, reports, certificates, and more.",
+                "service-academic-title": "Academic Documents",
+                "service-academic-desc": "Theses, dissertations, research papers, transcripts, and diplomas.",
+                "service-legal-title": "Legal Documents",
+                "service-legal-desc": "Court documents, patents, legal contracts, and official statements.",
+                "why-choose-title": "Why Choose Me?",
+                "strength-speed-title": "Unmatched Speed",
+                "strength-speed-desc": "Receive your translated documents promptly without compromising on quality.",
+                "strength-accuracy-title": "Precision & Accuracy",
+                "strength-accuracy-desc": "Every translation is meticulously reviewed for complete accuracy and fidelity.",
+                "strength-pricing-title": "Affordable Pricing",
+                "strength-pricing-desc": "Competitive and transparent pricing to provide you with the best value.",
+                "strength-confidentiality-title": "Full Confidentiality",
+                "strength-confidentiality-desc": "Your documents and personal information are always treated with the highest level of confidentiality.",
+                "contact-title": "Get a Free Quote",
+                "form-name-label": "Name",
+                "form-name-placeholder": "Enter your name",
+                "form-email-label": "Email",
+                "form-email-placeholder": "Enter your email",
+                "form-message-label": "Message",
+                "form-message-placeholder": "Enter your message",
+                "form-submit-button": "Send Message",
+                "form-success": "Thank you for your message! I'll get back to you shortly.",
+                "footer-rights": "All rights reserved.",
+            },
+            ar: {
+                "page-title": "خدمات ترجمة وثائق متميزة",
+                "logo-title": "ترجمة احترافية",
+                "hero-headline": ["ترجمة الوثائق"],
+                "hero-description": "أقدم ترجمات دقيقة وعالية الجودة لمختلف الوثائق، مما يضمن وصول رسالتك بشكل مثالي. ثق بخبرتي لتلبية جميع احتياجاتك اللغوية.",
+                "contact-cta": "اطلب عرض سعر مجاني",
+                "services-title": "خدماتي",
+                "service-admin-title": "الوثائق الإدارية",
+                "service-admin-desc": "عقود، مراسلات تجارية، تقارير، شهادات، والمزيد.",
+                "service-academic-title": "الوثائق الأكاديمية",
+                "service-academic-desc": "رسائل الماجستير والدكتوراه، الأوراق البحثية، كشوف الدرجات، والدبلومات.",
+                "service-legal-title": "الوثائق القانونية",
+                "service-legal-desc": "وثائق المحكمة، براءات الاختراع، العقود القانونية، والبيانات الرسمية.",
+                "why-choose-title": "لماذا تختارني؟",
+                "strength-speed-title": "سرعة لا مثيل لها",
+                "strength-speed-desc": "استلم وثائقك المترجمة بسرعة دون المساومة على الجودة.",
+                "strength-accuracy-title": "دقة وصرامة",
+                "strength-accuracy-desc": "يتم مراجعة كل ترجمة بدقة لضمان الدقة الكاملة والموثوقية.",
+                "strength-pricing-title": "أسعار معقولة",
+                "strength-pricing-desc": "أسعار تنافسية وشفافة لتوفير أفضل قيمة لك.",
+                "strength-confidentiality-title": "سرية تامة",
+                "strength-confidentiality-desc": "يتم التعامل مع وثائقك ومعلوماتك الشخصية بأعلى مستوى من السرية.",
+                "contact-title": "احصل على عرض سعر مجاني",
+                "form-name-label": "الاسم",
+                "form-name-placeholder": "أدخل اسمك",
+                "form-email-label": "البريد الإلكتروني",
+                "form-email-placeholder": "أدخل بريدك الإلكتروني",
+                "form-message-label": "الرسالة",
+                "form-message-placeholder": "أدخل رسالتك",
+                "form-submit-button": "إرسال الرسالة",
+                "form-success": "شكراً لرسالتك! سأتواصل معك قريباً.",
+                "footer-rights": "جميع الحقوق محفوظة.",
+            },
+            fr: {
+                "page-title": "Services de Traduction de Documents Premium",
+                "logo-title": "Traduction Pro",
+                "hero-headline": ["Traduction de documents"],
+                "hero-description": "Je fournis des traductions précises et de haute qualité pour divers documents, en veillant à ce que votre message soit parfaitement transmis. Faites confiance à mon expertise pour tous vos besoins linguistiques.",
+                "contact-cta": "Obtenir un Devis Gratuit",
+                "services-title": "Mes Services",
+                "service-admin-title": "Documents Administratifs",
+                "service-admin-desc": "Contrats, correspondances commerciales, rapports, certificats, et plus encore.",
+                "service-academic-title": "Documents Académiques",
+                "service-academic-desc": "Thèses, dissertations, articles de recherche, relevés de notes et diplômes.",
+                "service-legal-title": "Documents Légaux",
+                "service-legal-desc": "Documents judiciaires, brevets, contrats juridiques et déclarations officielles.",
+                "why-choose-title": "Pourquoi Me Choisir ?",
+                "strength-speed-title": "Vitesse Inégalée",
+                "strength-speed-desc": "Recevez vos documents traduits rapidement sans compromettre la qualité.",
+                "strength-accuracy-title": "Précision & Exactitude",
+                "strength-accuracy-desc": "Chaque traduction est méticuleusement révisée pour une exactitude et une fidélité complètes.",
+                "strength-pricing-title": "Prix Abordables",
+                "strength-pricing-desc": "Des prix compétitifs et transparents pour vous offrir le meilleur rapport qualité-prix.",
+                "strength-confidentiality-title": "Confidentialité Absolue",
+                "strength-confidentiality-desc": "Vos documents et informations personnelles sont toujours traités avec le plus haut niveau de confidentialité.",
+                "contact-title": "Obtenir un Devis Gratuit",
+                "form-name-label": "Nom",
+                "form-name-placeholder": "Entrez votre nom",
+                "form-email-label": "Email",
+                "form-email-placeholder": "Entrez votre email",
+                "form-message-label": "Message",
+                "form-message-placeholder": "Entrez votre message",
+                "form-submit-button": "Envoyer le Message",
+                "form-success": "Merci pour votre message! Je vous répondrai sous peu.",
+                "footer-rights": "Tous droits réservés.",
+            },
+            es: {
+                "page-title": "Servicios de Traducción de Documentos Premium",
+                "logo-title": "Traducción Pro",
+                "hero-headline": ["Traducción de documentos"],
+                "hero-description": "Ofrezco traducciones precisas y de alta calidad para diversos documentos, asegurando que su mensaje se transmita perfectamente. Confíe en mi experiencia para todas sus necesidades lingüísticas.",
+                "contact-cta": "Obtenga un Presupuesto Gratuito",
+                "services-title": "Mis Servicios",
+                "service-admin-title": "Documentos Administrativos",
+                "service-admin-desc": "Contratos, correspondencia comercial, informes, certificados y más.",
+                "service-academic-title": "Documentos Académicos",
+                "service-academic-desc": "Tesis, disertaciones, trabajos de investigación, expedientes académicos y diplomas.",
+                "service-legal-title": "Documentos Legales",
+                "service-legal-desc": "Documentos judiciales, patentes, contratos legales y declaraciones oficiales.",
+                "why-choose-title": "¿Por Qué Elegirme?",
+                "strength-speed-title": "Velocidad Insuperable",
+                "strength-speed-desc": "Reciba sus documentos traducidos rápidamente sin comprometer la calidad.",
+                "strength-accuracy-title": "Precisión y Exactitud",
+                "strength-accuracy-desc": "Cada traducción se revisa meticulosamente para una exactitud y fidelidad completas.",
+                "strength-pricing-title": "Precios Asequibles",
+                "strength-pricing-desc": "Precios competitivos y transparentes para ofrecerle el mejor valor.",
+                "strength-confidentiality-title": "Total Confidencialidad",
+                "strength-confidentiality-desc": "Sus documentos e información personal siempre se tratan con el más alto nivel de confidencialidad.",
+                "contact-title": "Obtenga un Presupuesto Gratuito",
+                "form-name-label": "Nombre",
+                "form-name-placeholder": "Ingrese su nombre",
+                "form-email-label": "Email",
+                "form-email-placeholder": "Ingrese su email",
+                "form-message-label": "Mensaje",
+                "form-message-placeholder": "Ingrese su mensaje",
+                "form-submit-button": "Enviar Mensaje",
+                "form-success": "¡Gracias por su mensaje! Me pondré en contacto con usted en breve.",
+                "footer-rights": "Todos los derechos reservados.",
+            },
+            zh: {
+                "page-title": "优质文档翻译服务",
+                "logo-title": "专业翻译",
+                "hero-headline": ["翻译文件"],
+                "hero-description": "我为各类文档提供准确、高质量的翻译，确保您的信息得到完美传达。信赖我的专业知识，满足您的所有语言需求。",
+                "contact-cta": "获取免费报价",
+                "services-title": "我的服务",
+                "service-admin-title": "行政文件",
+                "service-admin-desc": "合同、商业信函、报告、证书等。",
+                "service-academic-title": "学术文件",
+                "service-academic-desc": "论文、学位论文、研究报告、成绩单和文凭。",
+                "service-legal-title": "法律文件",
+                "service-legal-desc": "法院文件、专利、法律合同和官方声明。",
+                "why-choose-title": "为何选择我？",
+                "strength-speed-title": "无与伦比的速度",
+                "strength-speed-desc": "快速接收您的翻译文档，同时不影响质量。",
+                "strength-accuracy-title": "精确与准确",
+                "strength-accuracy-desc": "每份翻译都经过精心审查，以确保完全准确和忠实。",
+                "strength-pricing-title": "价格实惠",
+                "strength-pricing-desc": "有竞争力的透明价格，为您提供最佳价值。",
+                "strength-confidentiality-title": "完全保密",
+                "strength-confidentiality-desc": "您的文档和个人信息始终得到最高级别的保密处理。",
+                "contact-title": "获取免费报价",
+                "form-name-label": "姓名",
+                "form-name-placeholder": "输入您的姓名",
+                "form-email-label": "电子邮件",
+                "form-email-placeholder": "输入您的电子邮件",
+                "form-message-label": "信息",
+                "form-message-placeholder": "输入您的信息",
+                "form-submit-button": "发送信息",
+                "form-success": "谢谢您的留言！我会尽快与您联系。",
+                "footer-rights": "保留所有权利。",
+            }
+        };
+
+        const languageSwitcher = document.getElementById('language-switcher');
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const animatedHeadline = document.getElementById('animated-headline');
+
+        // Animate the hero headline text
+        const headlineTexts = [
+            "Document Translation",
+            "ترجمة الوثائق",
+            "Traduction de documents",
+            "Traducción de documentos",
+            "翻译文件"
+        ];
+        let currentHeadlineIndex = 0;
+
+        function animateHeadline() {
+            animatedHeadline.textContent = headlineTexts[currentHeadlineIndex];
+            animatedHeadline.classList.add('animated-text');
+            setTimeout(() => {
+                animatedHeadline.classList.remove('animated-text');
+                currentHeadlineIndex = (currentHeadlineIndex + 1) % headlineTexts.length;
+            }, 4500); // Wait for the animation to complete before changing text
+        }
+        setInterval(animateHeadline, 5000); // Change text every 5 seconds
+
+        // Function to update the page content based on the selected language
+        const updateContent = (lang) => {
+            const currentLangContent = translations[lang];
+            if (!currentLangContent) return;
+
+            // Set the page direction and font
+            document.body.classList.toggle('rtl', lang === 'ar');
+            document.documentElement.lang = lang;
+
+            // Update all elements with a data-lang-key attribute
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (currentLangContent[key]) {
+                    // Special handling for placeholder attributes on input fields
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = currentLangContent[key];
+                    } else if (element.id === 'animated-headline') {
+                        // Skip the hero headline as it's handled by a separate animation
+                        return;
+                    } else {
+                        element.textContent = currentLangContent[key];
+                    }
+                }
+            });
+        };
+
+        // Event listener for the language switcher dropdown
+        languageSwitcher.addEventListener('change', (event) => {
+            updateContent(event.target.value);
+        });
+
+        // Event listener for the contact form submission
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Log the form data to the console for demonstration purposes
+            console.log('Form Submitted!');
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Message:', message);
+
+            // Show a success message to the user
+            formMessage.textContent = translations[languageSwitcher.value]["form-success"];
+            formMessage.classList.remove('hidden', 'text-red-600');
+            formMessage.classList.add('text-green-600');
+
+            // Clear the form fields after a short delay
+            setTimeout(() => {
+                contactForm.reset();
+                formMessage.classList.add('hidden');
+            }, 3000);
+        });
+
+        // Set the WhatsApp link dynamically
+        // Note: Replace '1234567890' with your actual WhatsApp number, including the country code
+        const phoneNumber = '1234567890';
+        const prefilledMessage = encodeURIComponent("Hello, I would like to inquire about your document translation services.");
+        whatsappLink.href = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`;
+        
+        // Initial content load and headline animation start
+        document.addEventListener('DOMContentLoaded', () => {
+            updateContent(languageSwitcher.value);
+            animateHeadline(); // Initial call to start the headline animation
+        });
+    </script>
+</body>
+</html>
