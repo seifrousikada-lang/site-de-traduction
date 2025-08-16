@@ -60,16 +60,23 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Custom styles for the fixed WhatsApp button */
-        .whatsapp-fixed-btn {
+        /* Custom styles for the fixed buttons container */
+        .social-fixed-btns {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .social-fixed-btn {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
         }
-        .whatsapp-fixed-btn:hover {
+
+        .social-fixed-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
@@ -83,10 +90,17 @@
 </head>
 <body class="antialiased">
 
-    <!-- Floating WhatsApp Button -->
-    <a href="#" id="whatsapp-link" class="whatsapp-fixed-btn p-4 bg-green-500 rounded-full shadow-lg text-white transform hover:scale-110">
-        <i class="fab fa-whatsapp text-4xl"></i>
-    </a>
+    <!-- Floating social media buttons container -->
+    <div class="social-fixed-btns">
+        <!-- Floating WhatsApp Button -->
+        <a href="#" id="whatsapp-link" class="social-fixed-btn p-4 bg-green-500 rounded-full shadow-lg text-white transform hover:scale-110">
+            <i class="fab fa-whatsapp text-4xl"></i>
+        </a>
+        <!-- Floating Facebook Button -->
+        <a href="https://www.facebook.com/share/1FFtdBumc1/" target="_blank" class="social-fixed-btn p-4 bg-blue-600 rounded-full shadow-lg text-white transform hover:scale-110">
+            <i class="fab fa-facebook-f text-4xl"></i>
+        </a>
+    </div>
 
     <!-- Header and Navigation -->
     <header class="bg-white shadow-lg sticky top-0 z-50 rounded-b-xl">
@@ -545,8 +559,7 @@
             updateContent(languageSwitcher.value);
             animateHeadline(); // Initial call to start the headline animation
             });
-            </script>
-            
-        </body>
-        </html>
+        </script>
         
+    </body>
+    </html>
