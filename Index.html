@@ -93,7 +93,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-blue-600">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9a3 3 0 100 6 3 3 0 000-6z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 9a3 3 0 100 6 3 3 0 000-6zM15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 9a3 3 0 100 6 3 3 0 016 0z" />
                 </svg>
                 <h1 class="text-2xl font-bold text-gray-800" data-lang-key="logo-title">Translate Pro</h1>
             </div>
@@ -218,19 +218,19 @@
                     <form id="contact-form" class="space-y-6">
                         <div>
                             <label for="name" class="block text-gray-700 font-semibold mb-2" data-lang-key="form-name-label">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter your name" data-lang-key="form-name-placeholder" required>
+                            <input type="text" id="name" name="from_name" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter your name" data-lang-key="form-name-placeholder" required>
                         </div>
                         <div>
                             <label for="email" class="block text-gray-700 font-semibold mb-2" data-lang-key="form-email-label">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter your email" data-lang-key="form-email-placeholder" required>
+                            <input type="email" id="email" name="from_email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" placeholder="Enter your email" data-lang-key="form-email-placeholder" required>
                         </div>
                         <div>
                             <label for="message" class="block text-gray-700 font-semibold mb-2" data-lang-key="form-message-label">Message</label>
                             <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all duration-300" placeholder="Enter your message" data-lang-key="form-message-placeholder" required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105" data-lang-key="form-submit-button">Send Message</button>
+                        <button type="submit" id="form-submit-btn" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105" data-lang-key="form-submit-button">Send Message</button>
                     </form>
-                    <div id="form-message" class="mt-4 text-center text-green-600 font-semibold hidden"></div>
+                    <div id="form-message" class="mt-4 text-center font-semibold hidden"></div>
                 </div>
             </div>
         </section>
@@ -242,7 +242,14 @@
             <p>&copy; 2024 Translate Pro. <span data-lang-key="footer-rights">All rights reserved.</span></p>
         </div>
     </footer>
-
+    
+    <!-- EmailJS SDK and scripts -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your Public Key
+        // IMPORTANT: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key
+        emailjs.init("YOUR_PUBLIC_KEY");
+    </script>
     <script>
         const translations = {
             en: {
@@ -275,7 +282,9 @@
                 "form-message-label": "Message",
                 "form-message-placeholder": "Enter your message",
                 "form-submit-button": "Send Message",
+                "form-sending": "Sending...",
                 "form-success": "Thank you for your message! I'll get back to you shortly.",
+                "form-error": "Failed to send the message. Please try again.",
                 "footer-rights": "All rights reserved.",
             },
             ar: {
@@ -308,7 +317,9 @@
                 "form-message-label": "الرسالة",
                 "form-message-placeholder": "أدخل رسالتك",
                 "form-submit-button": "إرسال الرسالة",
+                "form-sending": "يتم الإرسال...",
                 "form-success": "شكراً لرسالتك! سأتواصل معك قريباً.",
+                "form-error": "فشل في إرسال الرسالة. الرجاء المحاولة مرة أخرى.",
                 "footer-rights": "جميع الحقوق محفوظة.",
             },
             fr: {
@@ -341,7 +352,9 @@
                 "form-message-label": "Message",
                 "form-message-placeholder": "Entrez votre message",
                 "form-submit-button": "Envoyer le Message",
+                "form-sending": "Envoi en cours...",
                 "form-success": "Merci pour votre message! Je vous répondrai sous peu.",
+                "form-error": "Échec de l'envoi du message. Veuillez réessayer.",
                 "footer-rights": "Tous droits réservés.",
             },
             es: {
@@ -374,7 +387,9 @@
                 "form-message-label": "Mensaje",
                 "form-message-placeholder": "Ingrese su mensaje",
                 "form-submit-button": "Enviar Mensaje",
+                "form-sending": "Enviando...",
                 "form-success": "¡Gracias por su mensaje! Me pondré en contacto con usted en breve.",
+                "form-error": "Fallo al enviar el mensaje. Por favor, inténtelo de nuevo.",
                 "footer-rights": "Todos los derechos reservados.",
             },
             zh: {
@@ -407,7 +422,9 @@
                 "form-message-label": "信息",
                 "form-message-placeholder": "输入您的信息",
                 "form-submit-button": "发送信息",
+                "form-sending": "正在发送...",
                 "form-success": "谢谢您的留言！我会尽快与您联系。",
+                "form-error": "发送信息失败。请重试。",
                 "footer-rights": "保留所有权利。",
             }
         };
@@ -415,6 +432,7 @@
         const languageSwitcher = document.getElementById('language-switcher');
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
+        const formSubmitBtn = document.getElementById('form-submit-btn');
         const whatsappLink = document.getElementById('whatsapp-link');
         const animatedHeadline = document.getElementById('animated-headline');
 
@@ -450,15 +468,15 @@
             // Update all elements with a data-lang-key attribute
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
-                if (currentLangContent[key]) {
-                    // Special handling for placeholder attributes on input fields
+                const content = currentLangContent[key];
+
+                if (content) {
                     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = currentLangContent[key];
+                        element.placeholder = content;
                     } else if (element.id === 'animated-headline') {
-                        // Skip the hero headline as it's handled by a separate animation
-                        return;
+                        return; // Skip the hero headline as it's handled by a separate animation
                     } else {
-                        element.textContent = currentLangContent[key];
+                        element.textContent = content;
                     }
                 }
             });
@@ -473,26 +491,44 @@
         contactForm.addEventListener('submit', (event) => {
             event.preventDefault(); // Prevent default form submission
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const serviceId = 'YOUR_SERVICE_ID'; // Replace with your Service ID
+            const templateId = 'YOUR_TEMPLATE_ID'; // Replace with your Template ID
 
-            // Log the form data to the console for demonstration purposes
-            console.log('Form Submitted!');
-            console.log('Name:', name);
-            console.log('Email:', email);
-            console.log('Message:', message);
+            const currentLang = languageSwitcher.value;
+            const sendingMessage = translations[currentLang]["form-sending"];
+            const successMessage = translations[currentLang]["form-success"];
+            const errorMessage = translations[currentLang]["form-error"];
+            
+            // Show sending message and disable the button
+            formMessage.textContent = sendingMessage;
+            formMessage.classList.remove('hidden', 'text-green-600', 'text-red-600');
+            formMessage.classList.add('text-gray-500');
+            formSubmitBtn.disabled = true;
+            formSubmitBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
-            // Show a success message to the user
-            formMessage.textContent = translations[languageSwitcher.value]["form-success"];
-            formMessage.classList.remove('hidden', 'text-red-600');
-            formMessage.classList.add('text-green-600');
+            emailjs.sendForm(serviceId, templateId, contactForm)
+                .then(() => {
+                    // On success
+                    formMessage.textContent = successMessage;
+                    formMessage.classList.remove('text-gray-500', 'text-red-600');
+                    formMessage.classList.add('text-green-600');
 
-            // Clear the form fields after a short delay
-            setTimeout(() => {
-                contactForm.reset();
-                formMessage.classList.add('hidden');
-            }, 3000);
+                    // Clear the form fields after a short delay
+                    setTimeout(() => {
+                        contactForm.reset();
+                        formMessage.classList.add('hidden');
+                        formSubmitBtn.disabled = false;
+                        formSubmitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }, 3000);
+                }, (error) => {
+                    // On error
+                    console.error('EmailJS Failed:', error);
+                    formMessage.textContent = errorMessage;
+                    formMessage.classList.remove('text-gray-500', 'text-green-600');
+                    formMessage.classList.add('text-red-600');
+                    formSubmitBtn.disabled = false;
+                    formSubmitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                });
         });
 
         // Set the WhatsApp link dynamically
@@ -507,33 +543,5 @@
             animateHeadline(); // Initial call to start the headline animation
         });
     </script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
-<script>
-    (function(){
-        emailjs.init("PKIhV_Vg3vkxmb5XZ"); // trouvé dans Account > API Keys
-    })();
-</script>
-
-<script>
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        emailjs.send("service_cxeen91", "template_cc29z6a", {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-        }).then(() => {
-            formMessage.textContent = translations[languageSwitcher.value]["form-success"];
-            formMessage.classList.remove('hidden', 'text-red-600');
-            formMessage.classList.add('text-green-600');
-            contactForm.reset();
-        }, (error) => {
-            formMessage.textContent = "❌ Erreur d’envoi : " + error.text;
-            formMessage.classList.remove('hidden', 'text-green-600');
-            formMessage.classList.add('text-red-600');
-        });
-    });
-</script>
-
 </body>
 </html>
